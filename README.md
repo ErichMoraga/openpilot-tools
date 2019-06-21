@@ -30,7 +30,7 @@ Setup
 ============
 
 
-1. Install native dependencies (Mac and Ubuntu sections listed below)
+1. Install scripts for Ubuntu and Mac OS
     
     **Ubuntu script based installation**
     ```bash
@@ -89,7 +89,6 @@ Setup
 
 Tool examples
 ============
-
 
 Replay driving data
 -------------
