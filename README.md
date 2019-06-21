@@ -97,7 +97,7 @@ Replay driving data
 
 `unlogger.py` replays data collected with [chffrplus](https://github.com/commaai/chffrplus) or [openpilot](https://github.com/commaai/openpilot).
 
-You'll need to download log and camera files into a local directory. Download these from the footer of the comma [explorer](https://my.comma.ai) or SCP from your device.
+You'll need to download log and camera files into a local directory. Download these from the footer of the comma [explorer](https://my.comma.ai),[cabana](https://my.comma.ai/cabana/) or SCP from your device.
 
 Usage:
 
@@ -125,7 +125,7 @@ Debug car controls
 **Hardware needed**: [panda](panda.comma.ai), [giraffe](https://comma.ai/shop/products/giraffe/), joystick
 
 Use the panda's OBD-II port to connect with your car and a usb cable to connect the panda to your pc.
-Also, connect a joystick to your pc.
+Also, connect a joystick to your pc. This can be used to test if there is support for steering and breaking "digitally"
 
 `joystickd.py` runs a deamon that reads inputs from a joystick and publishes them over zmq.
 `boardd.py` sends the CAN messages from your pc to the panda.
@@ -190,6 +190,11 @@ python streamer/streamerd.py
 
 ![Imgur](stream.gif)
 
+Other useful EON tools
+=============
+[Workbench by jfrux](https://github.com/jfrux/workbench)
+[The driving model by comma](https://github.com/commaai/research)
+
 
 Welcomed contributions
 =============
@@ -198,3 +203,4 @@ Welcomed contributions
 * Support for other platforms other than Ubuntu 16.04.
 * Performance improvements: the tools have been developed on high-performance workstations (12+ logical cores with 32+ GB of RAM), so they are not optimized for running efficiently. For example, `ui.py` might not be able to run real-time on most PCs.
 * More tools: anything that you think might be helpful to others.
+* Support for native Windows without linux subsystem.
