@@ -1,22 +1,23 @@
-echo "Installing core tools"
+echo "***********************************Installing core tools***********************************"
 sudo apt install git curl python-pip autoconf
 
-echo "Upgrading pip"
+echo "***********************************Upgrading pip***********************************"
 sudo pip install --upgrade pip>=18.0
 
-echo "Installing ffmpeg and required tools"
+echo "***********************************Installing ffmpeg and required tools***********************************"
 sudo apt install ffmpeg libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev libssl-dev
 
-echo "Installing build tools like build-essential automake clang"
+echo "***********************************Installing build tools like build-essential automake clang***********************************"
 
 sudo apt install autoconf automake clang clang-3.8 libtool pkg-config build-essential
 sudo apt install libarchive-dev
 
-echo "Installing qt"
+echo "***********************************Installing qt***********************************"
 
 sudo apt install python-qt4
 
-echo "Installing zmq required for replaying driving data"
+echo "***********************************Installing zmq required for replaying driving data (to default PATH)***********************************"
+cd
 curl -LO https://github.com/zeromq/libzmq/releases/download/v4.2.3/zeromq-4.2.3.tar.gz
 tar xfz zeromq-4.2.3.tar.gz
 cd zeromq-4.2.3
@@ -25,8 +26,10 @@ cd zeromq-4.2.3
 make
 sudo make install
 cd ..
+rm -rf zeromq-4.2.3
+rm -rf zeromq-4.2.3.tar.gz
 
-echo "Installing Cap'n Proto"
+echo "***********************************Installing Cap'n Proto***********************************"
 
 curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
 tar xvf capnproto-c++-0.6.1.tar.gz
@@ -36,8 +39,27 @@ make -j4
 sudo make install
 
 cd ..
+rm -rf capnproto-c++-0.6.1
+rm -rf capnproto-c++-0.6.1.tar.gz
+rm -rf =18.0
+
+echo "***********************************Cloning OP and setting up Tools***********************************"
+cd
+git clone https://github.com/commaai/openpilot.git
+cd openpilot
+git reset --hard
+git clone https://github.com/commaai/openpilot-tools.git tools
+cd tools
+git reset --hard
+
+echo "***********************************pip installing! If this fails, remove the version constraint in the requirements.txt for which pip failed***********************************"
+echo "***********************************most distros have a shitty old version of python OpenSSL, removing it if it exists... (don't worry, we'll reinstall a recent version)***********************************"
+sudo rm -rvf /usr/local/lib/python2.7/dist-packages/OpenSSL/
 sudo pip install -r requirements.txt
-
-
-
-
+sed -i 's/cryptography==1.4/cryptography/g' ../requirements_openpilot.txt
+sed -i 's/pyOpenSSL==16.0.0/pyOpenSSL/g' ../requirements_openpilot.txt
+sed -i 's/pyopencl==2016.1/pyopencl/g' ../requirements_openpilot.txt
+sed -i 's/pytools==2016.2.1/pytools/g' ../requirements_openpilot.txt
+sed -i 's/simplejson==3.8.2/simplejson/g' ../requirements_openpilot.txt
+sed -i '1s/^/mako /' ../requirements_openpilot.txt 
+sudo pip install -r ../requirements_openpilot.txt
