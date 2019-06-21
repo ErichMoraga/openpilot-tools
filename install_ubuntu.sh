@@ -1,3 +1,4 @@
+cd ~/
 echo "***********************************Installing core tools***********************************"
 sudo apt install git curl python-pip autoconf
 
