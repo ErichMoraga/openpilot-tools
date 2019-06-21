@@ -75,9 +75,8 @@ sed -i 's/simplejson==3.8.2/simplejson/g' ../requirements_openpilot.txt
 sed -i '1s/^/mako /' ../requirements_openpilot.txt 
 sudo pip install -r ../requirements_openpilot.txt
 
-echo 'export PYTHONPATH="$PYTHONPATH:~/openpilot"' >> ~/.profile
-echo 'export BASEDIR="$BASEDIR:~/openpilot"' >> ~/.profile
-source ~/.profile
+echo 'export PYTHONPATH="$PYTHONPATH:~/openpilot"' >> ~/.bashrc
+source ~/.bashrc
 
 sudo mkdir /data
 sudo mkdir /data/params
