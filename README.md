@@ -36,108 +36,11 @@ Setup
     ```bash
     ./install_ubuntu.sh
     ```
-   
-    **Ubuntu manual installation**
-    
-    - core tools
-      ```bash
-      sudo apt install git curl python-pip
-      sudo pip install --upgrade pip>=18.0
-      ```
 
-    - ffmpeg (tested with 3.3.2)
-      ```bash
-      sudo apt install ffmpeg libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev
-      ```
-
-    - build tools
-      ```bash
-      sudo apt install autoconf automake clang clang-3.8 libtool pkg-config build-essential
-      ```
-
-    - libarchive-dev (tested with 3.1.2-11ubuntu0.16.04.4)
-      ```bash
-      sudo apt install libarchive-dev
-      ```
-
-    - qt python binding (tested with python-qt4, 4.11.4+dfsg-1build4)
-      ```bash
-      sudo apt install python-qt4
-      ```
-
-    - zmq 4.2.3 (required for replay)
-      ```bash
-      curl -LO https://github.com/zeromq/libzmq/releases/download/v4.2.3/zeromq-4.2.3.tar.gz
-      tar xfz zeromq-4.2.3.tar.gz
-      cd zeromq-4.2.3
-      ./autogen.sh
-      ./configure CPPFLAGS=-DPIC CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS=-fPIC --disable-shared --enable-static
-      make
-      sudo make install
-      ```
-
-    **Mac**
-
-    - brew
-      ``` bash
-      /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-      ```
-
-    - core tools
-      ``` bash
-      brew install git
-      sudo pip install --upgrade pip
-      xcode-select --install
-      ```
-
-    - ffmpeg (tested with 3.4.1)
-        ```bash
-        brew install ffmpeg
-        ```
-
-    - build tools
-        ```bash
-        brew install autoconf automake libtool llvm pkg-config
-        ```
-
-    - libarchive-dev (tested with 3.3.3)
-        ```bash
-        brew install libarchive
-        ```
-
-    - qt for Mac
-        ```bash
-        brew install qt
-        ```
-
-    - zmq 4.3.1 (required for replay)
-        ```bash
-        brew install zeromq
-        ```
-
-2. Install Cap'n Proto
-
+    ** Mac OS script based installation **
     ```bash
-    curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
-    tar xvf capnproto-c++-0.6.1.tar.gz
-    cd capnproto-c++-0.6.1
-    ./configure --prefix=/usr/local CPPFLAGS=-DPIC CFLAGS=-fPIC CXXFLAGS=-fPIC LDFLAGS=-fPIC --disable-shared --enable-static
-    make -j4
-    sudo make install
-
-    cd ..
-    git clone https://github.com/commaai/c-capnproto.git
-    cd c-capnproto
-    git submodule update --init --recursive
-    autoreconf -f -i -s
-    CFLAGS="-fPIC" ./configure --prefix=/usr/local
-    make -j4
-    sudo make install
+    ./install_mac.sh
     ```
-
-
-
-
 2. Clone openpilot if you haven't already
 
     ```bash
