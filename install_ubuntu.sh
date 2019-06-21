@@ -60,7 +60,7 @@ cd openpilot
 git reset 36881b6410b87e5f898dbfe79d2236dd1cc8654e --hard
 git clone https://github.com/commaai/openpilot-tools.git tools
 cd tools
-git reset 16a2a50c826eb75b8249430283daa59689bd2e52 --hard
+git reset 3df301e5783d7dc37cf3b079e96ad07cd4f2d0c3 --hard
 
 echo "***********************************pip installing! If this fails, remove the version constraint in the requirements.txt for which pip failed***********************************"
 echo "***********************************most distros have a shitty old version of python OpenSSL, removing it if it exists... (don't worry, we'll reinstall a recent version)***********************************"
