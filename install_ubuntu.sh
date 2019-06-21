@@ -80,3 +80,5 @@ source ~/.bash_profile
 sudo mkdir /data
 sudo mkdir /data/params
 sudo chown $USER /data/params
+
+echo "Now, try out some tools!"
