@@ -81,4 +81,4 @@ sudo mkdir /data
 sudo mkdir /data/params
 sudo chown $USER /data/params
 
-echo "Now, try out some tools!"
+echo "Now, try out some tools! If you get a DataUnreadableError(fn)  when running replay.py -- apply this fix manually https://github.com/LHillmann/openpilot-tools/commit/c1dd99a41832becf806c7f2dddde39666a35d498"
