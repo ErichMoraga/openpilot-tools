@@ -37,7 +37,7 @@ Setup
     ./install_ubuntu.sh
     ```
 
-    ** Mac OS script based installation **
+    **Mac OS script based installation**
     ```bash
     ./install_mac.sh
     ```
