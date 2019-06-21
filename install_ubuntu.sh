@@ -5,7 +5,7 @@ echo "Upgrading pip"
 sudo pip install --upgrade pip>=18.0
 
 echo "Installing ffmpeg and required tools"
-sudo apt install ffmpeg libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev
+sudo apt install ffmpeg libavformat-dev libavcodec-dev libavdevice-dev libavutil-dev libswscale-dev libavresample-dev libavfilter-dev libssl-dev
 
 echo "Installing build tools like build-essential automake clang"
 
