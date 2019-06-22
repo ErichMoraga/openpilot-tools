@@ -52,17 +52,14 @@ cd ..
 rm -rf capnproto-c++-0.6.1
 rm -rf capnproto-c++-0.6.1.tar.gz
 rm -rf c-capnproto
-rm -rf =18.0
+rm -rf "=18.0"
 
 echo "***********************************Cloning OP and setting up Tools***********************************"
-cd
+cd ~/
 git clone https://github.com/commaai/openpilot.git
 cd openpilot
-git reset 36881b6410b87e5f898dbfe79d2236dd1cc8654e --hard
 git clone https://github.com/commaai/openpilot-tools.git tools
 cd tools
-git reset 3df301e5783d7dc37cf3b079e96ad07cd4f2d0c3 --hard
-
 echo "***********************************pip installing! If this fails, remove the version constraint in the requirements.txt for which pip failed***********************************"
 echo "***********************************most distros have a shitty old version of python OpenSSL, removing it if it exists... (don't worry, we'll reinstall a recent version)***********************************"
 sudo rm -rvf /usr/local/lib/python2.7/dist-packages/OpenSSL/
@@ -74,10 +71,11 @@ sed -i 's/pytools==2016.2.1/pytools/g' ../requirements_openpilot.txt
 sed -i 's/simplejson==3.8.2/simplejson/g' ../requirements_openpilot.txt
 sed -i '1s/^/mako /' ../requirements_openpilot.txt 
 sudo pip install -r ../requirements_openpilot.txt
-
-echo 'export PYTHONPATH="$PYTHONPATH:~/openpilot"' >> ~/.bashrc
-source ~/.bashrc
-
+unset PYTHONPATH
+export PYTHONPATH=~/openpilot/
+bash
+env | grep PYTHONPATH
+sudo rm -rvf ~/openpilot-tools
 sudo mkdir /data
 sudo mkdir /data/params
 sudo chown $USER /data/params
